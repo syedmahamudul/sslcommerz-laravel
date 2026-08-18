@@ -1,0 +1,49 @@
+{
+    "name": "syedmahamudul/sslcommerz-laravel",
+    "description": "SSLCommerz Payment Gateway Integration Package for Laravel",
+    "keywords": ["laravel", "sslcommerz", "payment", "payment-gateway", "bangladesh"],
+    "homepage": "https://github.com/syedmahamudul/sslcommerz-laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Syed Mahamudul Hassan",
+            "email": "syedmahamudhassan@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "*",
+        "guzzlehttp/guzzle": "*",
+        "illuminate/support": "*",
+        "illuminate/http": "*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "*",
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Syedmahamudul\\Sslcommerz\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Syedmahamudul\\Sslcommerz\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Syedmahamudul\\Sslcommerz\\Providers\\SslcommerzServiceProvider"
+            ],
+            "aliases": {
+                "Sslcommerz": "Syedmahamudul\\Sslcommerz\\Facades\\Sslcommerz"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
