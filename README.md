@@ -469,8 +469,8 @@ class SslcommerzPaymentController extends Controller
         $productId = $request->product_id;
         $quantity = $request->quantity;
 
-        $price = $this->getProductPrice($productId);
-        $productName = $this->getProductName($productId);
+        $price = Product::query()->where('id', $productId)->value('price');
+        $productName = Product::query()->where('id', $productId)->value('name');
 
         $totalAmount = $price * $quantity;
         $transactionId = 'SSL' . time() . '_' . uniqid();
@@ -808,27 +808,6 @@ class SslcommerzPaymentController extends Controller
 
         return response()->json(['status' => 'success']);
     }
-
-    // Helper methods
-    private function getProductPrice($productId)
-    {
-        $prices = [
-            1 => 100,
-            2 => 200,
-            3 => 300,
-        ];
-        return $prices[$productId] ?? 100;
-    }
-
-    private function getProductName($productId)
-    {
-        $names = [
-            1 => 'Product 1',
-            2 => 'Product 2',
-            3 => 'Product 3',
-        ];
-        return $names[$productId] ?? 'Product';
-    }
 }
 
 
@@ -937,14 +916,16 @@ class SslcommerzPaymentController extends Controller
 
         $productId = $request->input('product_id');
         $quantity = $request->input('quantity');
-        $price = $this->getProductPrice($productId);
+         $price = Product::query()->where('id', $productId)->value('price');
+        $productName = Product::query()->where('id', $productId)->value('name');
+
         $totalAmount = $price * $quantity;
         $transactionId = 'SSL' . time() . '_' . uniqid();
 
         $orderData = [
             'transaction_id' => $transactionId,
             'product_id' => $productId,
-            'product_name' => $this->getProductName($productId),
+            'product_name' => $productName,
             'quantity' => $quantity,
             'total_amount' => $totalAmount,
             'customer_name' => $request->input('customer_name'),
