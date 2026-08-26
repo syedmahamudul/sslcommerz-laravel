@@ -1,25 +1,48 @@
 {
     "name": "syedmahamudul/sslcommerz-laravel",
-    "description": "SSLCommerz Payment Gateway Integration Package for Laravel",
-    "keywords": ["laravel", "sslcommerz", "payment", "payment-gateway", "bangladesh"],
+    "version": "1.0.1",
+    "description": "The easiest SSLCommerz payment gateway package for Laravel with automatic validation, refund, and IPN support",
+    "keywords": [
+        "laravel",
+        "sslcommerz",
+        "payment-gateway",
+        "bangladesh",
+        "laravel-package",
+        "sslcommerz-laravel",
+        "payment-integration",
+        "laravel-payment",
+        "ssl",
+        "commerce",
+        "bdt",
+        "secure-payment",
+        "online-payment"
+    ],
     "homepage": "https://github.com/syedmahamudul/sslcommerz-laravel",
     "license": "MIT",
+    "type": "laravel-package",
     "authors": [
         {
-            "name": "Syed Mahamudul Hassan",
-            "email": "syedmahamudhassan@gmail.com",
-            "role": "Developer"
+            "name": "Syed Mahamudul Hasan",
+            "email": "syedmahamudulhasan@gmail.com",
+            "role": "Lead Developer",
+            "homepage": "https://github.com/syedmahamudul"
         }
     ],
+    "support": {
+        "email": "syedmahamudulhasan@gmail.com",
+        "issues": "https://github.com/syedmahamudul/sslcommerz-laravel/issues",
+        "source": "https://github.com/syedmahamudul/sslcommerz-laravel",
+        "docs": "https://github.com/syedmahamudul/sslcommerz-laravel/blob/main/README.md"
+    },
     "require": {
-        "php": "*",
-        "guzzlehttp/guzzle": "*",
-        "illuminate/support": "*",
-        "illuminate/http": "*"
+        "php": "^8.1|^8.2|^8.3|^8.4",
+        "guzzlehttp/guzzle": "^7.0|^8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/http": "^9.0|^10.0|^11.0|^12.0"
     },
     "require-dev": {
-        "orchestra/testbench": "*",
-        "phpunit/phpunit": "*"
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^9.0|^10.0|^11.0"
     },
     "autoload": {
         "psr-4": {
@@ -44,6 +67,18 @@
             }
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan package:discover --ansi"
+        ],
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
+    }
 }
